@@ -1,4 +1,4 @@
-usage: replace the path to the image you want to use in Image.open
+usage: python3 amogusinator [path to image]
 
 dependencies:
 PIL,
