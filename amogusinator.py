@@ -8,7 +8,6 @@ print(sys.argv[1:][0])
 
 pixels = np.array(Image.open(sys.argv[1:][0]))
 dimensions = pixels.shape
-#print(dimensions[0])
 
 def get_average_color(segment_flat):
     r, g, b, pxcount = 0, 0, 0, 0
