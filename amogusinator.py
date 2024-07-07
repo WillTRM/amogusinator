@@ -1,12 +1,14 @@
 from PIL import Image
 import numpy as np
+import sys
 np.set_printoptions(threshold=np.inf)
 
 #if image has factors 4 and 5, amogus army will fit perfectly
+print(sys.argv[1:][0])
 
-pixels = np.array(Image.open("sasha.jpg"))
+pixels = np.array(Image.open(sys.argv[1:][0]))
 dimensions = pixels.shape
-print(dimensions[0])
+#print(dimensions[0])
 
 def get_average_color(segment_flat):
     r, g, b, pxcount = 0, 0, 0, 0
@@ -64,7 +66,6 @@ for row in range(0, dimensions[0], 5):
         top_left_col = col
         bottom_right_row = row + 5
         bottom_right_col = col + 4
-        #print(f"({top_left_row}, {top_left_col}), ({bottom_right_row}, {bottom_right_col})")
 
         square = pixels[top_left_row:bottom_right_row+1, top_left_col:bottom_right_col+1]
         square_flat = square.reshape(-1, square.shape[-1])
@@ -74,11 +75,6 @@ for row in range(0, dimensions[0], 5):
         except:
             print("oob lol")
             continue
-        #pixels[top_left_row:bottom_right_row+1, top_left_col:bottom_right_col+1] = generate_amogus(square, get_average_color(square_flat))
-
-#f = open("pixeldata.txt", "w")
-#f.write(str(pixels))
-#f.close()
 
 new_image = Image.fromarray(pixels)
 new_image.save("amogusized.png")
